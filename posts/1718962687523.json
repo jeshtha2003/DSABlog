@@ -1,0 +1,6 @@
+{
+  "id": "1718962687523",
+  "title": "code2",
+  "content": "int n = size(nums), ans = INT_MIN;\n      int sum =0;\n        for(int i = 0; i < n; i++){\n            sum +=nums[i];\n            ans = max(sum,ans);\n            if(sum<0){\n                sum =0;\n            }\n        }\n        return ans;\n//test",
+  "timestamp": "2024-06-21T09:56:22.510Z"
+}
