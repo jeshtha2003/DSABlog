@@ -162,15 +162,16 @@ h1 {
     }
 }
 .toggle-title-button {
-    background-color: lightgreen;
-    color: white;
+    background-color: #5cb85c; /* Green */
+    color: #fff; /* White text color */
+    padding: 10px 20px;
     border: none;
-    padding: 8px 16px;
+    border-radius: 5px;
     cursor: pointer;
-    margin-bottom: 10px;
-  }
-  
-  .toggle-title-button:hover {
-    background-color: limegreen; /* Darker shade of green on hover */
-  }
-  
+}
+
+.toggle-title-button:hover {
+    background-color: #4cae4c; /* Darker shade of green on hover */
+}
+
+
