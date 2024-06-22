@@ -57,18 +57,49 @@ document.addEventListener('DOMContentLoaded', function () {
                 body: JSON.stringify(post)
             });
         } else {
-            await fetch('/api/posts', {
+            const response = await fetch('/api/posts', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(post)
             });
+
+            const newPost = await response.json(); // Get the newly created post from the response
+            renderNewPost(newPost); // Render the new post
         }
 
         blogForm.reset();
         editingPostId = null;
-        await fetchPosts();
+    }
+
+    async function renderNewPost(post) {
+        const postDiv = document.createElement('div');
+        postDiv.classList.add('post');
+        postDiv.innerHTML = `
+            <button class="toggle-title-button" data-id="${post.id}">Show Title</button>
+            <h2 style="display:none;">${post.title}</h2>
+            <p>${post.content}</p>
+            <div class="timestamp">Posted on: ${new Date(post.timestamp).toLocaleString()}</div>
+            <div class="actions">
+                <button class="edit" data-id="${post.id}">Edit</button>
+                <button class="delete" data-id="${post.id}">Delete</button>
+            </div>
+        `;
+        postsContainer.insertBefore(postDiv, postsContainer.firstChild); // Insert the new post at the top
+
+        const toggleTitleButton = postDiv.querySelector('.toggle-title-button');
+        const titleHeader = postDiv.querySelector('h2');
+
+        toggleTitleButton.addEventListener('click', () => {
+            if (titleHeader.style.display === 'none') {
+                titleHeader.style.display = 'block';
+                toggleTitleButton.textContent = 'Hide Title';
+            } else {
+                titleHeader.style.display = 'none';
+                toggleTitleButton.textContent = 'Show Title';
+            }
+        });
     }
 
     async function handlePostEdit(event) {
