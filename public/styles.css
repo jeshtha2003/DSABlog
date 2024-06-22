@@ -161,3 +161,16 @@ h1 {
         align-items: flex-start;
     }
 }
+.toggle-title-button {
+    background-color: lightgreen;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  
+  .toggle-title-button:hover {
+    background-color: limegreen; /* Darker shade of green on hover */
+  }
+  
